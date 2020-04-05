@@ -22,24 +22,27 @@ class app {
 
         if (repoInput.length === 0)
             return;
-
+        this.setLoading();
+        try{
+            const response = await api.get(`/repos/${repoInput}`);
         
-        const response = await api.get(`/repos/${repoInput}`);
-        
-        const {name, description, html_url, owner:{avatar_url} } = response.data;
+            const {name, description, html_url, owner:{avatar_url} } = response.data;
+    
+            this.repositories.push({
+                name,
+                description,
+                avatar_url,
+                html_url
+            });
+    
+            this.inputEl.value = '';
+    
+            this.render()
+        }catch(err){
+            alert('O repositorio não existe!');
+        }
+        this.setLoading(false);
 
-        
-
-        this.repositories.push({
-            name,
-            description,
-            avatar_url,
-            html_url
-        });
-
-        this.inputEl.value = '';
-
-        this.render()
     }
 
     render(){
@@ -68,6 +71,18 @@ class app {
 
             this.listEl.appendChild(listItemEl);
         })
+    }
+
+    setLoading(loading = true) {
+        if(loading===true){
+            let loadingEl = document.createElement('span');
+            loadingEl.appendChild(document.createTextNode('Carregando...'));
+            loadingEl.setAttribute('id', 'loading');
+
+            this.formEl.appendChild(loadingEl);
+        }else{
+            document.getElementById('loading').remove();
+        }
     }
 }
 
