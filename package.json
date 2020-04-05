@@ -1,15 +1,25 @@
 {
-  "name": "curso_es6_aplicacao_final",
+  "name": "curso_es6_mudulo_ii",
   "version": "1.0.0",
-  "description": "Aplicação Final Curso ES6 Rocketseat",
+  "description": "Modulo_2",
   "main": "index.js",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.0",
+    "@babel/plugin-transform-async-to-generator": "^7.8.3",
+    "@babel/polyfill": "^7.8.7",
+    "@babel/preset-env": "^7.8.4",
+    "axios": "^0.19.2",
+    "babel-loader": "^8.1.0",
+    "lodash": "^4.17.15",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack-dev-server --mode=development"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/weyfelix/Curso_ES6_Aplicacao_final.git"
-  },
-  "author": "Wesley Felix",
+  "author": "Wesley_Felix",
   "license": "ISC"
 }
